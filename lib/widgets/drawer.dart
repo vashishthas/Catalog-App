@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MyDrawer extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -18,46 +17,46 @@ class MyDrawer extends StatelessWidget {
                   accountName: Text("Vashishtha"),
                   accountEmail: Text("v@gmail.com"),
                   currentAccountPicture: CircleAvatar(),
-                )
-              ),
-            ListTile(
-              leading: Icon(
-                CupertinoIcons.home,
-                color: Colors.white,
-              ),
-              title: Text(
-                "Home",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white),
-                ),
+                )),
+            DrawerTile(
+              text: "Home",
+              icon: CupertinoIcons.home,
             ),
-            ListTile(
-              leading: Icon(
-                CupertinoIcons.profile_circled,
-                color: Colors.white,
-              ),
-              title: Text(
-                "Profile",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white),
-                ),
+            DrawerTile(
+              text: "Profile",
+              icon: CupertinoIcons.profile_circled,
             ),
-            ListTile(
-              leading: Icon(
-                CupertinoIcons.mail,
-                color: Colors.white,
-              ),
-              title: Text(
-                "Email me",
-                textScaleFactor: 1.2,
-                style: TextStyle(
-                  color: Colors.white),
-                ),
-            )
+            DrawerTile(
+              text: "Email me",
+              icon: CupertinoIcons.mail,
+            ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class DrawerTile extends StatelessWidget {
+  const DrawerTile({
+    this.text,
+    this.icon,
+    Key key,
+  }) : super(key: key);
+  final String text;
+  final dynamic icon;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      leading: Icon(
+        icon,
+        color: Colors.white,
+      ),
+      title: Text(
+        text,
+        textScaleFactor: 1.2,
+        style: TextStyle(color: Colors.white),
       ),
     );
   }
