@@ -7,10 +7,13 @@ class HomeDetailPage extends StatelessWidget {
   const HomeDetailPage({Key key, @required this.catalog}) : super(key: key);
   Widget build(BuildContext context) {
     return SafeArea(
-          child: Scaffold(
+      child: Scaffold(
+        appBar: AppBar(),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Column(children: [Image.network(catalog.image)]),
+          child: Column(children: [Hero(
+            tag: catalog.id,
+            child: Image.network(catalog.image))]),
         ),
       ),
     );

@@ -19,9 +19,12 @@ class CatalogItem extends StatelessWidget {
               color: Colors.grey,
               width: MediaQuery.of(context).size.width * 0.4,
               child: Center(
-                child: Image.network(
-                  catalog.image,
-                  fit: BoxFit.scaleDown,
+                child: Hero(
+                  tag: catalog.id,
+                  child: Image.network(
+                    catalog.image,
+                    fit: BoxFit.scaleDown,
+                  ),
                 ),
               ),
             ),
