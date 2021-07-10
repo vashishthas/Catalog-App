@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:catalog/models/catalog.dart';
+import 'package:catalog/utils/routes.dart';
 import 'package:catalog/widgets/catalogHeader.dart';
 import 'package:catalog/widgets/catalog_list.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +43,13 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     // final dummyList=List.generate(10, (index) => CatalogModel.items[0]);
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blue,
+        onPressed: () {
+          Navigator.pushNamed(context, MyRoutes.cartRoute);
+        },
+        child: Icon(Icons.shopping_cart),
+      ),
       body: SafeArea(
         child: Container(
           padding: EdgeInsets.all(8),
