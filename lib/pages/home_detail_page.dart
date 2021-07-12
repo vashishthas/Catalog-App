@@ -1,4 +1,5 @@
 import 'package:catalog/models/catalog.dart';
+import 'package:catalog/widgets/add_to_cart.dart';
 import 'package:flutter/material.dart';
 
 class HomeDetailPage extends StatelessWidget {
@@ -55,12 +56,13 @@ class HomeDetailPage extends StatelessWidget {
                               "\$${catalog.price.toString()}",
                               style: TextStyle(color: Colors.red, fontSize: 30),
                             ),
-                            ElevatedButton(
-                                onPressed: () {},
-                                style: ButtonStyle(
-                                    shape: MaterialStateProperty.all(
-                                        StadiumBorder())),
-                                child: Text("BUY"))
+                            AddToCart(catalog: catalog),
+                            // ElevatedButton(
+                            //     onPressed: () {},
+                            //     style: ButtonStyle(
+                            //         shape: MaterialStateProperty.all(
+                            //             StadiumBorder())),
+                            //     child: Text("BUY"))
                           ],
                         ),
                         Spacer(

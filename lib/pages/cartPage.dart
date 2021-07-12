@@ -1,3 +1,5 @@
+import 'package:catalog/models/cart.dart';
+import 'package:catalog/widgets/add_to_cart.dart';
 import 'package:flutter/material.dart';
 
 class CartPage extends StatelessWidget {
@@ -25,8 +27,8 @@ class CartPage extends StatelessWidget {
 }
 
 class CartTotal extends StatelessWidget {
-  // const CartTotal({Key? key}) : super(key: key);
-
+  CartTotal({Key key}) : super(key: key);
+  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -35,7 +37,7 @@ class CartTotal extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Text(
-            "Total",
+            "\$${_cart.totalPrice}",
             style: TextStyle(fontSize: 30),
           ),
           InkWell(
@@ -56,18 +58,33 @@ class CartTotal extends StatelessWidget {
   }
 }
 
-class CartList extends StatelessWidget {
-  const CartList({Key key}) : super(key: key);
+class CartList extends StatefulWidget {
+  CartList({Key key}) : super(key: key);
+
+  @override
+  _CartListState createState() => _CartListState();
+}
+
+class _CartListState extends State<CartList> {
+  final _cart = CartModel();
 
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-        itemCount: 5,
+        itemCount: _cart.items?.length,
         itemBuilder: (context, index) {
           return ListTile(
             leading: Icon(Icons.done),
-            title: Text("Item $index"),
-            trailing: Icon(Icons.remove_circle_outline),
+            title: Text("${_cart.items[index].name}"),
+            trailing: InkWell(
+                onTap: () {
+                  _cart.remove(_cart.items[index]);
+                  AddToCart(catalog: _cart.items[index],);
+                  setState(() {});
+                },
+                child: Icon(
+                  Icons.remove_circle_outline,
+                )),
           );
         });
   }
