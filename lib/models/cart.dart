@@ -2,11 +2,11 @@ import 'package:catalog/models/catalog.dart';
 import 'package:flutter/cupertino.dart';
 
 class CartModel with ChangeNotifier {
-  // static final cartModel = CartModel._internal();
+  // // static final cartModel = CartModel._internal();
 
-  // CartModel._internal();
+  // // CartModel._internal();
 
-  // factory CartModel() => cartModel;
+  // // factory CartModel() => cartModel;
 
   // catalog field
   CatalogModel _catalog;

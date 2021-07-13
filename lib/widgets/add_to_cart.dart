@@ -4,18 +4,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class AddToCart extends StatefulWidget {
+class AddToCart extends StatelessWidget {
   final Item item;
   const AddToCart({
     @required this.item,
     Key key,
   }) : super(key: key);
 
-  @override
-  _AddToCartState createState() => _AddToCartState();
-}
+//   @override
+//   _AddToCartState createState() => _AddToCartState();
+// }
 
-class _AddToCartState extends State<AddToCart> {
+// class _AddToCartState extends State<AddToCart> {
   // bool isInCart = false;
   // final _cart = CartModel();
   // final _catalog=CatalogModel();
@@ -23,7 +23,7 @@ class _AddToCartState extends State<AddToCart> {
   @override
   Widget build(BuildContext context) {
     final cartmodel=Provider.of<CartModel>(context);
-    bool isInCart = cartmodel.items.contains(widget.item) ?? false;
+    bool isInCart = cartmodel.items.contains(item) ?? false;
     return ElevatedButton(
         onPressed: () {
           if (!isInCart) {
@@ -31,7 +31,7 @@ class _AddToCartState extends State<AddToCart> {
             isInCart = true;
             final _catalog = CatalogModel();
             cartmodel.catalog = _catalog;
-            cartmodel.add(widget.item);
+            cartmodel.add(item);
             print(cartmodel.items);
             // setState(() {});
           }

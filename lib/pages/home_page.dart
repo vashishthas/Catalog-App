@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:catalog/models/cart.dart';
 import 'package:catalog/models/catalog.dart';
 import 'package:catalog/utils/routes.dart';
 import 'package:catalog/widgets/catalogHeader.dart';
@@ -8,7 +7,6 @@ import 'package:catalog/widgets/catalog_list.dart';
 import 'package:flutter/material.dart';
 import 'package:catalog/widgets/drawer.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);

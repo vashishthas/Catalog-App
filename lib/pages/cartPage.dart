@@ -37,14 +37,6 @@ class CartTotal extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          // Consumer<CartModel>(
-          //   builder: (context, cartmodel, child) {
-          //     return Text(
-          //         // "${model.totalPrice}",
-          //         "\$${cartmodel.totalPrice}",
-          //         style: TextStyle(fontSize: 30));
-          //   },
-          // child:
           Text(
             "\$${cartmodel.totalPrice}",
             style: TextStyle(fontSize: 30),
@@ -68,22 +60,19 @@ class CartTotal extends StatelessWidget {
   }
 }
 
-class CartList extends StatefulWidget {
+class CartList extends StatelessWidget {
   CartList({Key key}) : super(key: key);
 
-  @override
-  _CartListState createState() => _CartListState();
-}
+//   @override
+//   _CartListState createState() => _CartListState();
+// }
 
-class _CartListState extends State<CartList> {
+// class _CartListState extends State<CartList> {
   // final _cart = CartModel();
 
   @override
   Widget build(BuildContext context) {
     final cartmodel = Provider.of<CartModel>(context);
-    // return Consumer<CartModel>(builder: (context, cartmodel, child) {
-    // },
-    // child:
     return ListView.builder(
         itemCount: cartmodel.items?.length,
         itemBuilder: (context, index) {
@@ -93,10 +82,6 @@ class _CartListState extends State<CartList> {
             trailing: InkWell(
                 onTap: () {
                   cartmodel.remove(cartmodel.items[index]);
-                  // AddToCart(
-                  //   catalog: _cart.items[index],
-                  // );
-                  // setState(() {});
                 },
                 child: Icon(
                   Icons.remove_circle_outline,
