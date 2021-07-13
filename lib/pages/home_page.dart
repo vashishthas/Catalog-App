@@ -28,10 +28,10 @@ class _HomePageState extends State<HomePage> {
     // print("a1" + catalogJson);
     var decodedData = jsonDecode(catalogJson);
     // print("a2");
-    print(decodedData);
+    // print(decodedData);
     var productsData = decodedData["products"];
     print("a3");
-    print(productsData);
+    // print(productsData);
     // List <Item> list=List.from(productsData).map<Item>((item) => Item.fromMap(item)).toList();
     CatalogModel.items = List.from(productsData)
         .map<Item>((item) => Item.fromMap(item))

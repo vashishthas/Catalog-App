@@ -56,7 +56,7 @@ class HomeDetailPage extends StatelessWidget {
                               "\$${catalog.price.toString()}",
                               style: TextStyle(color: Colors.red, fontSize: 30),
                             ),
-                            AddToCart(catalog: catalog),
+                            AddToCart(item: catalog),
                             // ElevatedButton(
                             //     onPressed: () {},
                             //     style: ButtonStyle(
