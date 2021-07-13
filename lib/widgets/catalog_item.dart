@@ -50,7 +50,7 @@ class CatalogItem extends StatelessWidget {
                         TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
                 Padding(
                   padding: const EdgeInsets.only(right: 12.0),
-                  child: AddToCart(catalog: catalog),
+                  child: AddToCart(item: catalog),
                 )
               ])
             ]))

@@ -2,11 +2,12 @@ import 'package:catalog/models/cart.dart';
 import 'package:catalog/models/catalog.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AddToCart extends StatefulWidget {
-  final Item catalog;
+  final Item item;
   const AddToCart({
-    @required this.catalog,
+    @required this.item,
     Key key,
   }) : super(key: key);
 
@@ -16,20 +17,23 @@ class AddToCart extends StatefulWidget {
 
 class _AddToCartState extends State<AddToCart> {
   // bool isInCart = false;
-  final _cart = CartModel();
+  // final _cart = CartModel();
   // final _catalog=CatalogModel();
+  
   @override
   Widget build(BuildContext context) {
-    bool isInCart = _cart.items.contains(widget.catalog) ?? false;
+    final cartmodel=Provider.of<CartModel>(context);
+    bool isInCart = cartmodel.items.contains(widget.item) ?? false;
     return ElevatedButton(
         onPressed: () {
           if (!isInCart) {
             print("added to cart");
             isInCart = true;
             final _catalog = CatalogModel();
-            _cart.catalog = _catalog;
-            _cart.add(widget.catalog);
-            setState(() {});
+            cartmodel.catalog = _catalog;
+            cartmodel.add(widget.item);
+            print(cartmodel.items);
+            // setState(() {});
           }
         },
         style: ButtonStyle(shape: MaterialStateProperty.all(StadiumBorder())),

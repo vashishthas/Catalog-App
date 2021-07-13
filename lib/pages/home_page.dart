@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:catalog/models/cart.dart';
 import 'package:catalog/models/catalog.dart';
 import 'package:catalog/utils/routes.dart';
 import 'package:catalog/widgets/catalogHeader.dart';
@@ -7,6 +8,7 @@ import 'package:catalog/widgets/catalog_list.dart';
 import 'package:flutter/material.dart';
 import 'package:catalog/widgets/drawer.dart';
 import 'package:flutter/services.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -28,10 +30,10 @@ class _HomePageState extends State<HomePage> {
     // print("a1" + catalogJson);
     var decodedData = jsonDecode(catalogJson);
     // print("a2");
-    print(decodedData);
+    // print(decodedData);
     var productsData = decodedData["products"];
     print("a3");
-    print(productsData);
+    // print(productsData);
     // List <Item> list=List.from(productsData).map<Item>((item) => Item.fromMap(item)).toList();
     CatalogModel.items = List.from(productsData)
         .map<Item>((item) => Item.fromMap(item))
