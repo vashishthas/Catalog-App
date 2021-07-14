@@ -7,21 +7,45 @@ class CartPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final cartmodel = Provider.of<CartModel>(context);
     return Scaffold(
       backgroundColor: Theme.of(context).canvasColor,
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         title: Text("Cart"),
       ),
-      body: Column(children: [
-        Expanded(
-          child: Padding(padding: const EdgeInsets.all(32.0), child: CartList()
-              // Placeholder(),
+      body: cartmodel.items.length == 0
+          ? Center(
+              child: Container(
+                // width: MediaQuery.of(context).size.width * 0.7,
+                // width: 100,
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Spacer(),
+                    Image.asset('assets/images/emptyCart.png'),
+                    Text(
+                      "Cart is empty",
+                      style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    ),
+                    Spacer()
+                  ],
+                ),
               ),
-        ),
-        Divider(),
-        CartTotal()
-      ]),
+            )
+          : Column(children: [
+              Expanded(
+                child: Padding(
+                    padding: const EdgeInsets.all(32.0), child: CartList()
+                    // Placeholder(),
+                    ),
+              ),
+              Divider(),
+              CartTotal()
+            ]),
     );
   }
 }
@@ -73,20 +97,42 @@ class CartList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final cartmodel = Provider.of<CartModel>(context);
-    return ListView.builder(
-        itemCount: cartmodel.items?.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: Icon(Icons.done),
-            title: Text("${cartmodel.items[index].name}"),
-            trailing: InkWell(
-                onTap: () {
-                  cartmodel.remove(cartmodel.items[index]);
-                },
-                child: Icon(
-                  Icons.remove_circle_outline,
-                )),
-          );
-        });
+    return
+        // cartmodel.items.length == 0
+        // ? Center(
+        //     child: Container(
+        //       color: Colors.white,
+        //       child: Column(
+        //         children: [
+        //           Spacer(),
+        //           Image.asset('assets/images/emptyCart.png'),
+        //           Text(
+        //             "Cart is empty",
+        //             style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
+        //           ),
+        //           Spacer()
+        //         ],
+        //       ),
+        //     ),
+        //   )
+        // :
+        ListView.builder(
+            itemCount: cartmodel.items?.length,
+            itemBuilder: (context, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: ListTile(
+                  leading: Image.network(cartmodel.items[index].image),
+                  title: Text("${cartmodel.items[index].name}"),
+                  trailing: InkWell(
+                      onTap: () {
+                        cartmodel.remove(cartmodel.items[index]);
+                      },
+                      child: Icon(
+                        Icons.remove_circle_outline,
+                      )),
+                ),
+              );
+            });
   }
 }

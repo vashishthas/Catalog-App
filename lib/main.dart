@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
           create: (context) => CartModel(),
           child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        themeMode: ThemeMode.system,
+        themeMode: ThemeMode.light,
         theme: MyTheme.lightTheme(context),
         darkTheme: MyTheme.darkTheme(context),
         initialRoute: MyRoutes.homeRoute,
